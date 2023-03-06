@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 // import SecondApp from "./SecondApp";
 // import PhoneBook from "./PhoneBook";
 import App from "./App";
+
 // import Modal from "./components/Modal/Modal";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

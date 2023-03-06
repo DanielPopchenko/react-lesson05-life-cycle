@@ -1,22 +1,23 @@
 import React, { Component } from "react";
-import Modal from "./components/Modal/Modal";
+// import Modal from "./components/Modal/Modal";
+import Clock from "./components/Clock/Clock";
 
 export default class App extends Component {
   state = {
-    showModal: false,
+    showClock: true,
   };
 
-  toggleModal = () => {
+  toggleClock = () => {
     // ! тоглит состояние showModal whed clicked
-    this.setState((state) => ({ showModal: !state.showModal }));
+    this.setState((state) => ({ showClock: !state.showClock }));
   };
 
   render() {
-    const { showModal } = this.state;
+    const { showClock } = this.state;
 
     return (
       <div>
-        <button type="button" onClick={this.toggleModal}>
+        {/* <button type="button" onClick={this.toggleModal}>
           {showModal ? "Hide" : "Show"} Modal
         </button>
         {showModal && (
@@ -33,8 +34,13 @@ export default class App extends Component {
             <button type="button" onClick={this.toggleModal}>
               Close Modal
             </button>
-          </Modal>
-        )}
+          </Modal> */}
+        {/* )} */}
+
+        <button type="button" onClick={this.toggleClock}>
+          {showClock ? "Hide" : "Show"} Modal
+        </button>
+        {showClock && <Clock></Clock>}
       </div>
     );
   }
