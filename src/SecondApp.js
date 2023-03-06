@@ -14,6 +14,35 @@ class SecondApp extends Component {
     filter: "",
   };
 
+  // ! Методы жизенного цикла пишутся после объявления state и статических методов класса
+
+  componentDidMount() {
+    console.log("Tasks componentDidMount");
+
+    // ! делаем это для проверки того есть ли у нас таски в локалсторедже
+    const persistedTasks = localStorage.getItem("tasks");
+
+    // ! Сохранение (персист) в localStorage
+    if (persistedTasks) {
+      this.setState({
+        // ! результат JSON.parse() - массив объектов
+        tasks: JSON.parse(persistedTasks),
+      });
+    }
+  }
+
+  // ! Передается предыдущие пропы и стэйт до обновдения
+  componentDidUpdate(prevProps, prevState) {
+    console.log("tasks componentDidUpdate");
+    if (prevState.tasks !== this.state.tasks) {
+      console.log("нужно в лс");
+
+      localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+    }
+  }
+
+  componentWillUnmount() {}
+
   changeFilter = (filter) => {
     this.setState({ filter });
   };
