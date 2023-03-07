@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import Modal from "./components/Modal/Modal";
 import Clock from "./components/Clock/Clock";
+import Tabs from "./components/Tabs/Tabs";
+import tabs from "./components/tabs.json";
 
 export default class App extends Component {
   state = {
@@ -37,10 +39,16 @@ export default class App extends Component {
           </Modal> */}
         {/* )} */}
 
-        <button type="button" onClick={this.toggleClock}>
-          {showClock ? "Hide" : "Show"} Modal
-        </button>
-        {showClock && <Clock></Clock>}
+        {/* <div>
+          <button type="button" onClick={this.toggleClock}>
+            {showClock ? "Hide" : "Show"} Modal
+          </button>
+          {showClock && <Clock></Clock>}
+        </div> */}
+
+        <div>
+          <Tabs items={tabs} />
+        </div>
       </div>
     );
   }

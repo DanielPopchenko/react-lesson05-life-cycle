@@ -1,0 +1,16 @@
+[{
+        "id": "id-1",
+        "label": "Js for beginners",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda hic sed doloribus perferendis adipisci quod molestias id accusamus mollitia fuga dolores, possimus iure quasi sapiente sunt quia quis itaque!"
+    },
+    {
+        "id": "id-2",
+        "label": "React for beginners",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda hic sed doloribus perferendis adipisci quod molestias id accusamus mollitia fuga dolores, possimus iure quasi sapiente sunt quia quis itaque!"
+    },
+    {
+        "id": "id-3",
+        "label": "ML for beginners",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda hic sed doloribus perferendis adipisci quod molestias id accusamus mollitia fuga dolores, possimus iure quasi sapiente sunt quia quis itaque!"
+    }
+]
