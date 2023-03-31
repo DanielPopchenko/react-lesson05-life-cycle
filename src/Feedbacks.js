@@ -1,52 +1,56 @@
-import React, { Component } from "react";
-import FeedbackList from "./components/LeaveFeedback/FeedbackList";
-import Statistics from "./components/LeaveFeedback/Statistics";
+import React, { useEffect, useState } from 'react';
 
-export default class Feedbacks extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+import FeedbackList from './components/LeaveFeedback/FeedbackList';
+import Statistics from './components/LeaveFeedback/Statistics';
+
+export default function Feedbacks() {
+  const [goodFeedback, setGoodFeedback] = useState(0);
+  const [neutralFeedback, setNeutralFeedback] = useState(0);
+  const [badFeedback, setBadFeedback] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const handleBtnClick = (e) => {
+    const name = e.target.name;
+
+    switch (name) {
+      case 'good':
+        setGoodFeedback((goodFeedback) => (goodFeedback += 1));
+        break;
+      case 'neutral':
+        setNeutralFeedback((neutralFeedback) => (neutralFeedback += 1));
+        break;
+      case 'bad':
+        setBadFeedback((badFeedback) => (badFeedback += 1));
+        break;
+
+      default:
+        return;
+    }
   };
 
-  increaseValue = (name) => {
-    this.setState((prevState) => {
-      return {
-        [name]: prevState[name] + 1,
-      };
-    });
+  useEffect(() => {
+    function countTotalFeedbacks() {
+      return goodFeedback + neutralFeedback + badFeedback;
+    }
+
+    setTotal(countTotalFeedbacks());
+  }, [goodFeedback, neutralFeedback, badFeedback, total]);
+
+  const countPositiveFeedbacks = () => {
+    return Math.floor((goodFeedback * 100) / total) + '%';
   };
 
-  countTotalFeedbacks = () => {
-    return Object.values(this.state).reduce((acc, val) => acc + val, 0);
-  };
-
-  countPositiveFeedbacks = () => {
-    const total = this.countTotalFeedbacks();
-    const good = this.state.good;
-
-    return Math.floor((good * 100) / total) + "%";
-  };
-
-  render() {
-    const feedbacks = this.state;
-    const state = this.state;
-
-    return (
-      <section>
-        <h1>Homework</h1>
-        <FeedbackList
-          feedbacks={feedbacks}
-          onIncreaseValue={this.increaseValue}
-        />
-        <Statistics
-          good={state.good}
-          neutral={state.neutral}
-          bad={state.bad}
-          totalFeedbacks={this.countTotalFeedbacks()}
-          positiveFeedbacks={this.countPositiveFeedbacks()}
-        />
-      </section>
-    );
-  }
+  const positiveFeedbacks = countPositiveFeedbacks();
+  return (
+    <div>
+      <FeedbackList onBtnClick={handleBtnClick} />
+      <Statistics
+        good={goodFeedback}
+        neutral={neutralFeedback}
+        bad={badFeedback}
+        total={total}
+        positiveFeedbacks={positiveFeedbacks}
+      />
+    </div>
+  );
 }

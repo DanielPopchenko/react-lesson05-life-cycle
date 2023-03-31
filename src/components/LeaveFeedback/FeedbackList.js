@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getStarted } from './Statistics';
 
 const List = styled.ul`
   display: flex;
@@ -22,20 +21,29 @@ const Button = styled.button`
   }
 `;
 
-export default function FeedbackList({ feedbacks, onIncreaseValue }) {
-  const checkBtn = (event) => {
-    getStarted(true);
-    onIncreaseValue(event.target.name);
-  };
-
+export default function FeedbackList({ onBtnClick }) {
+  // const checkBtn = (event) =>
+  //   getStarted(true);
+  //   onIncreaseValue(event.target.name);
+  // };
   return (
     <>
       <List>
-        {Object.keys(feedbacks).map((value) => (
-          <Button key={value} name={value} onClick={checkBtn}>
-            {value}
-          </Button>
-        ))}
+        <li>
+          <button onClick={onBtnClick} name="good">
+            Good
+          </button>
+        </li>
+        <li>
+          <button onClick={onBtnClick} name="neutral">
+            Neutral
+          </button>
+        </li>
+        <li>
+          <button onClick={onBtnClick} name="bad">
+            Bad
+          </button>
+        </li>
       </List>
     </>
   );

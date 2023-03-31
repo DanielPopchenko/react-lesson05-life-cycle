@@ -1,24 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import StatisticsItems from './StatisticsItems';
 
-let status = false;
-
-const Title = styled.h2`
-  margin-top: 10px;
-  margin-bottom: 20px;
-`;
-
-export const getStarted = (flag) => {
-  return (status = flag);
-};
-
-export default function Statistics({ ...props }) {
+export default function Statistics({ good, neutral, bad, total, positiveFeedbacks }) {
   return (
     <>
-      <Title>Statistics</Title>
-
-      {status ? <StatisticsItems {...props} /> : <h2>Leave Feedback</h2>}
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total feedbacks: {total}</p>
+      {total > 0 && <p>Positive feedbacks: {positiveFeedbacks}</p>}
     </>
   );
 }

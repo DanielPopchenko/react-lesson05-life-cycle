@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import Modal from "./components/Modal/Modal";
-import Clock from "./components/Clock/Clock";
-import Tabs from "./components/Tabs/Tabs";
-import tabs from "./components/tabs.json";
+// import Clock from "./components/Clock/Clock";
+// import Tabs from "./components/Tabs/Tabs";
+// import tabs from "./components/tabs.json";
 
 export default class App extends Component {
   state = {
@@ -47,7 +47,7 @@ export default class App extends Component {
         </div> */}
 
         <div>
-          <Tabs items={tabs} />
+          {/* <Tabs items={tabs} /> */}
         </div>
       </div>
     );
