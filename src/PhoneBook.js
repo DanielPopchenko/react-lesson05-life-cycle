@@ -9,14 +9,13 @@ import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
 export default function PhoneBook() {
-  const [contacts, setContacts] = useState(
-    [...JSON.parse(window.localStorage.getItem('contacts'))] ?? '',
-  );
+  const [contacts, setContacts] = useState(() => {
+    // ! Для того, чтобы функция которая что-то вычисляет выполнилась только 1 раз
+    return [...JSON.parse(window.localStorage.getItem('contacts'))] ?? '';
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    console.log('Сетим контакт в LS');
-
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
